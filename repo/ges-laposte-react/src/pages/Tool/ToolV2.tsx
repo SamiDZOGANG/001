@@ -247,6 +247,48 @@ const ToolV2: React.FC = () => {
             <h2>Bienvenue dans le calculateur GES La Poste</h2>
             <p>Sélectionnez les catégories pertinentes pour votre entité :</p>
             
+            <div className="selection-controls">
+              <button 
+                className="select-all-btn"
+                onClick={() => {
+                  const allCategories = allSteps.slice(1, -2).map(s => s.id as EmissionCategory);
+                  if (availableCategories.length === allCategories.length) {
+                    // Tout désélectionner
+                    setAvailableCategories([]);
+                    allCategories.forEach(cat => deselectCategory(cat));
+                  } else {
+                    // Tout sélectionner
+                    setAvailableCategories(allCategories);
+                    allCategories.forEach(cat => selectCategory(cat));
+                  }
+                }}
+              >
+                {availableCategories.length === allSteps.slice(1, -2).length 
+                  ? '🔲 Tout désélectionner' 
+                  : '✅ Tout sélectionner'}
+              </button>
+              
+              <div className="quick-select-buttons">
+                <button 
+                  className="quick-select-btn"
+                  onClick={() => {
+                    const essentials = ['batiments', 'flotte-propre', 'deplacements-domicile'] as EmissionCategory[];
+                    setAvailableCategories(essentials);
+                    allSteps.slice(1, -2).forEach(step => {
+                      const cat = step.id as EmissionCategory;
+                      if (essentials.includes(cat)) {
+                        selectCategory(cat);
+                      } else {
+                        deselectCategory(cat);
+                      }
+                    });
+                  }}
+                >
+                  ⚡ Sélection rapide
+                </button>
+              </div>
+            </div>
+            
             <div className="categories-selection">
               {allSteps.slice(1, -2).map(step => {
                 const category = step.id as EmissionCategory;
@@ -257,29 +299,53 @@ const ToolV2: React.FC = () => {
                     key={category}
                     className={`category-option ${isSelected ? 'selected' : ''}`}
                     onClick={() => handleCategoryToggle(category)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleCategoryToggle(category);
+                      }
+                    }}
                   >
-                    <div className="category-checkbox">
+                    <div className="category-checkbox" onClick={(e) => e.stopPropagation()}>
                       <input 
                         type="checkbox" 
                         checked={isSelected}
-                        onChange={() => {}}
+                        onChange={() => handleCategoryToggle(category)}
                         id={`cat-${category}`}
+                        onClick={(e) => e.stopPropagation()}
                       />
                     </div>
-                    <label htmlFor={`cat-${category}`} className="category-label">
+                    <div className="category-content">
                       <span className="category-icon">{step.icon}</span>
                       <div className="category-info">
                         <span className="category-name">{step.label}</span>
                         <span className="category-desc">{step.description}</span>
                       </div>
-                    </label>
+                    </div>
+                    {isSelected && (
+                      <div className="selected-badge">
+                        ✓
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
 
             <div className="selection-summary">
-              <p>{availableCategories.length} catégorie(s) sélectionnée(s)</p>
+              <p>
+                <strong>{availableCategories.length}</strong> catégorie(s) sélectionnée(s) sur {allSteps.slice(1, -2).length}
+              </p>
+              {availableCategories.length > 0 && (
+                <p className="summary-detail">
+                  {availableCategories.map(cat => {
+                    const step = allSteps.find(s => s.id === cat);
+                    return step?.icon;
+                  }).join(' ')}
+                </p>
+              )}
             </div>
           </div>
         );
