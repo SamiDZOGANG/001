@@ -96,6 +96,11 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
           <div className="form-content">
             {renderForm()}
           </div>
+          
+          {/* Indicateur de défilement sur mobile */}
+          <div className="scroll-indicator">
+            <span>↓ Défiler pour voir tous les champs ↓</span>
+          </div>
 
           <div className="form-actions">
             <button 
