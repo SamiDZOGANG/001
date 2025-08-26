@@ -14,7 +14,7 @@ const STORAGE_KEY = 'ges_progress';
 const AUTO_SAVE_DELAY = 2000; // 2 secondes
 
 export const useAutoSave = (data: AutoSaveData, enabled: boolean = true) => {
-  const saveTimeoutRef = useRef<NodeJS.Timeout>();
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastSavedDataRef = useRef<string>('');
 
   // Fonction de sauvegarde
