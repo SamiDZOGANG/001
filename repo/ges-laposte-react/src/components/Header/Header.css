@@ -48,6 +48,8 @@
 /* Navigation principale */
 .main-nav {
   display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav-list {
@@ -71,6 +73,30 @@
 .nav-list li a.active {
   background: rgba(255, 209, 0, 0.2);
   color: #FFD100;
+}
+
+/* CTA Button in Header */
+.cta-header-btn {
+  background: #FFD100;
+  color: #003366;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cta-header-btn:hover {
+  background: #f5c500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 209, 0, 0.3);
+}
+
+.cta-header-btn:active {
+  transform: translateY(0);
 }
 
 /* Bouton menu mobile */
@@ -135,5 +161,12 @@
   .nav-list li a {
     padding: 1rem;
     border-radius: 10px;
+  }
+
+  .cta-header-btn {
+    margin: 1rem;
+    padding: 1rem 1.5rem;
+    width: calc(100% - 2rem);
+    text-align: center;
   }
 }

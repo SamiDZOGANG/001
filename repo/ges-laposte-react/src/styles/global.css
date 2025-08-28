@@ -8,7 +8,7 @@
   --secondary-color: #003366;
   --text-dark: #333;
   --text-light: #555;
-  --bg-light: #f9f9f9;
+  --bg-light: #ffffff;
   --white: #ffffff;
   --success: #28a745;
   --warning: #ffc107;
@@ -29,7 +29,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--bg-light);
-  padding-top: 80px;
+  padding-top: 35px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

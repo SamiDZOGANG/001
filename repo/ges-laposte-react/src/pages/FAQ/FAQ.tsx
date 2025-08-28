@@ -93,12 +93,25 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <main className="main-container faq-page">
-      <div className="section">
-        <h1>Foire aux questions</h1>
-        <p className="faq-subtitle">
-          Trouvez rapidement les réponses à vos questions sur le calculateur GES
-        </p>
+    <main className="main-container" style={{ backgroundColor: 'white' }}>
+      <section className="intro-section" style={{ padding: '2rem 4rem 0rem 4rem', minHeight: 'auto', display: 'block' }}>
+        <div className="intro-container">
+          <div className="section-header">
+            <div className="section-badge" style={{ marginTop: '2rem' }}>❓ Support et Assistance</div>
+            <h1 className="section-title">Questions Fréquentes</h1>
+            <p className="section-subtitle" style={{ marginBottom: '0rem', paddingBottom: '0rem', textAlign: 'center' }}>
+              Trouvez rapidement les réponses à vos questions sur le calculateur GES La Poste.
+              Notre équipe a rassemblé les interrogations les plus courantes pour vous accompagner 
+              dans l'utilisation de l'outil et la réalisation de votre bilan carbone.
+              Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à nous contacter 
+              directement via l'adresse email fournie en bas de cette page.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq-content-section" style={{ backgroundColor: 'white' }}>
+        <div className="intro-container">
 
         <div className="faq-categories">
           {categories.map(cat => (
@@ -144,7 +157,8 @@ const FAQ: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
+        </div>
+      </section>
     </main>
   );
 };

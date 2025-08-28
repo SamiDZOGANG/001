@@ -13,23 +13,27 @@
 /* Catégories */
 .faq-categories {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-top: 5px;
 }
 
 .category-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.2rem;
+  padding: 0.4rem 0.7rem;
   background: white;
   border: 2px solid #e0e0e0;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.95rem;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .category-btn:hover {
@@ -46,7 +50,7 @@
 }
 
 .category-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /* Liste FAQ */
@@ -160,12 +164,13 @@
 /* Responsive */
 @media (max-width: 768px) {
   .faq-categories {
-    flex-direction: column;
-    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 1rem;
   }
 
   .category-btn {
     justify-content: center;
+    min-width: auto;
   }
 
   .faq-question {

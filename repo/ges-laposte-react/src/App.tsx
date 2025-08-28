@@ -6,9 +6,10 @@ import Footer from './components/Footer/Footer';
 import NotificationContainer from './components/NotificationContainer/NotificationContainer';
 import BackToTop from './components/BackToTop/BackToTop';
 import Home from './pages/Home/Home';
-import ToolV2 from './pages/Tool/ToolV2';
+import StepBasedTool from './pages/Tool/StepBasedTool';
 import './pages/Tool/ToolV2.css';
 import Results from './pages/Results/Results';
+import Environment from './pages/Environment/Environment';
 import About from './pages/About/About';
 import FAQ from './pages/FAQ/FAQ';
 import './styles/global.css';
@@ -26,8 +27,9 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/outil" element={<ToolV2 />} />
+            <Route path="/outil" element={<StepBasedTool />} />
             <Route path="/resultats" element={<Results />} />
+            <Route path="/environnement" element={<Environment />} />
             <Route path="/apropos" element={<About />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
